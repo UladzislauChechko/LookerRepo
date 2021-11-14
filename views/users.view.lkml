@@ -14,7 +14,7 @@ view: users {
     sql: ${TABLE}."AGE" ;;
   }
 
-  dimension: age_tier2 {
+  dimension: age_tier {
     type: tier
     tiers: [15, 26, 36, 51, 66 ]
     style:integer
@@ -99,12 +99,13 @@ view: users {
     sql: ${TABLE}."CITY" || ' ' ||  ${TABLE}."STATE" ;;
   }
 
-  dimension: age_tier {
-    type: tier
-    tiers: [18, 25, 35, 45, 55, 65, 75, 90]
-    style: classic # the default value, could be excluded
-    sql: ${age} ;;
+  dimension: new_user_flag {
+    type: yesno
+    label: "New user Flag"
+    description: "New customers include any users that have signed up on the website within the last 90 days"
+    sql: datediff(day, date(${created_date}),CURRENT_DATE()) <= 90;;
   }
+
 
   measure: count {
     type: count
