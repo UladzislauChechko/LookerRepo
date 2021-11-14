@@ -89,31 +89,6 @@ view: inventory_items {
   }
 
 
-  measure: Total_Cost {
-    description: "Total cost of items sold from inventory"
-    type: sum
-    sql: ${cost} ;;
-    value_format_name: usd
-  }
 
-  measure: Average_Cost {
-    description: "Average cost of items sold from inventory"
-    type: average
-    sql: ${cost} ;;
-    value_format_name: usd
-  }
 
-  measure: Total_Gross_Margin_Amount {
-    description: "Total difference between the total revenue from completed sales and the cost of the goods that were sold"
-    type: sum
-    sql: ${product_retail_price} - ${cost} ;;
-    value_format_name: usd
-  }
-
-  measure: Average_Gross_Margin {
-    description: "Average difference between the total revenue from completed sales and the cost of the goods that were sold"
-    type: average
-    sql: ${product_retail_price} - ${cost};;
-    value_format_name: usd
-  }
 }

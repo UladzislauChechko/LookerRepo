@@ -14,6 +14,16 @@ view: users {
     sql: ${TABLE}."AGE" ;;
   }
 
+  dimension: age_tier2 {
+    type: tier
+    tiers: [15, 26, 36, 51, 66 ]
+    style:integer
+    # hidden: yes
+    label: "Age Tier2"
+    description: "Buckets: 15 - 25; 26 - 35; 36-50; 51-65; 66+"
+    sql: ${TABLE}."AGE";;
+  }
+
   dimension: city {
     type: string
     sql: ${TABLE}."CITY" ;;
